@@ -417,7 +417,6 @@
                   "CustomBackgroundPressed" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
-                  "Enabled" : false,
                   "Image" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
