@@ -1,4 +1,6 @@
-# Teren 1
+# Teren1 - CGE terrain editor example
+
+Works only with terrain-edit CGE branch. This is just a test program for the CastleTerrain module from this branch
 
 Using [Castle Game Engine](https://castle-engine.io/).
 
