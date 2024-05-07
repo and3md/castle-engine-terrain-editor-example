@@ -40,6 +40,7 @@ type
     BrushMaxHeightSlider: TCastleIntegerSlider;
     BrushSizeSlider: TCastleIntegerSlider;
     RingThicknessSlider: TCastleFloatSlider;
+    BrushRotationSlider: TCastleFloatSlider;
 
     RaiseTerrainButton: TCastleButton;
     LowerTerrainButton: TCastleButton;
@@ -53,12 +54,15 @@ type
     RingBrushButton: TCastleButton;
     LyingCylinderBrushButton: TCastleButton;
 
+    RotationPlus15DegButton: TCastleButton;
+
     LabelOperation: TCastleLabel;
   private
     Operation: TTerrainOperation;
     FBrush: TCastleTerrainBrush;
     procedure OperationClick(Sender: TObject);
     procedure BrushTypeClick(Sender: TObject);
+    procedure RotationPlus15DegButtonClick(Sender: TObject);
     procedure UpdateOperationAndBrushLabel;
     function BrushToString(ABrush: TCastleTerrainBrush): String;
     function OperationToString(AOperation: TTerrainOperation): String;
@@ -75,7 +79,7 @@ var
 
 implementation
 
-uses SysUtils, CastleLog;
+uses SysUtils, CastleLog, Math;
 
 { TViewMain ----------------------------------------------------------------- }
 
@@ -109,6 +113,14 @@ begin
     FBrush := ctbLyingCylinder;
 
   UpdateOperationAndBrushLabel;
+end;
+
+procedure TViewMain.RotationPlus15DegButtonClick(Sender: TObject);
+begin
+  if BrushRotationSlider.Value + 15.0 > 360.0 then
+    BrushRotationSlider.Value := 360.0
+  else
+    BrushRotationSlider.Value := BrushRotationSlider.Value + 15.0;
 end;
 
 procedure TViewMain.UpdateOperationAndBrushLabel;
@@ -170,6 +182,7 @@ begin
   ConeBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   RingBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   LyingCylinderBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
+  RotationPlus15DegButton.OnClick := {$ifdef FPC}@{$endif}RotationPlus15DegButtonClick;
 
   UpdateOperationAndBrushLabel;
 end;
@@ -194,7 +207,8 @@ begin
         toRaise:
           //Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
           Terrain.RaiseTerrainShader(HitInfo.Point, FBrush, BrushSizeSlider.Value,
-            StrengthSlider.Value, BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
+            StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
+            BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
           Terrain.LowerTerrain(HitInfo.Point, StrengthSlider.Value);
       end;
