@@ -50,6 +50,7 @@ type
     CircleBrushButton: TCastleButton;
     ConeBrushButton: TCastleButton;
     RingBrushButton: TCastleButton;
+    LyingCylinderBrushButton: TCastleButton;
 
     LabelOperation: TCastleLabel;
   private
@@ -102,7 +103,9 @@ begin
   else if Sender = ConeBrushButton then
     FBrush := ctbCone
   else if Sender = RingBrushButton then
-    FBrush := ctbRing;
+    FBrush := ctbRing
+  else if Sender = LyingCylinderBrushButton then
+    FBrush := ctbLyingCylinder;
 
   UpdateOperationAndBrushLabel;
 end;
@@ -127,6 +130,8 @@ begin
       Result := 'Cone';
     ctbRing:
       Result := 'Ring';
+    ctbLyingCylinder:
+      Result := 'Lying Cylinder';
   end;
 end;
 
@@ -163,6 +168,7 @@ begin
   CircleBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   ConeBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   RingBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
+  LyingCylinderBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
 
   UpdateOperationAndBrushLabel;
 end;

@@ -197,7 +197,7 @@
         "Green" : 5.7254904508590698E-001,
         "Red" : 4.5490196347236633E-001
       },
-      "Height" : 3.0000000000000000E+002,
+      "Height" : 3.2000000000000000E+002,
       "HorizontalAnchorParent" : "hpRight",
       "HorizontalAnchorSelf" : "hpRight",
       "Name" : "RectangleControl1",
@@ -208,7 +208,7 @@
       },
       "VerticalAnchorParent" : "vpTop",
       "VerticalAnchorSelf" : "vpTop",
-      "Width" : 6.3000000000000000E+002,
+      "Width" : 7.2000000000000000E+002,
       "$Children" : [
         {
           "$$ClassName" : "TCastleVerticalGroup",
@@ -390,7 +390,6 @@
                   "CustomBackgroundPressed" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
-                  "Enabled" : false,
                   "Image" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
@@ -476,6 +475,32 @@
                   "TranslationPersistent" : {
                     "$$ClassName" : "TCastleVector2Persistent",
                     "X" : 5.2300000000000000E+002
+                  },
+                  "VerticalAnchorParent" : "vpMiddle",
+                  "VerticalAnchorSelf" : "vpMiddle"
+                },
+                {
+                  "$$ClassName" : "TCastleButton",
+                  "Caption" : "Cylinder",
+                  "CustomBackgroundDisabled" : {
+                    "$$ClassName" : "TCastleImagePersistent"
+                  },
+                  "CustomBackgroundFocused" : {
+                    "$$ClassName" : "TCastleImagePersistent"
+                  },
+                  "CustomBackgroundNormal" : {
+                    "$$ClassName" : "TCastleImagePersistent"
+                  },
+                  "CustomBackgroundPressed" : {
+                    "$$ClassName" : "TCastleImagePersistent"
+                  },
+                  "Image" : {
+                    "$$ClassName" : "TCastleImagePersistent"
+                  },
+                  "Name" : "LyingCylinderBrushButton",
+                  "TranslationPersistent" : {
+                    "$$ClassName" : "TCastleVector2Persistent",
+                    "X" : 5.9500000000000000E+002
                   },
                   "VerticalAnchorParent" : "vpMiddle",
                   "VerticalAnchorSelf" : "vpMiddle"
@@ -620,6 +645,49 @@
                       "Width" : 3.0000000000000000E+002
                     }
                   ]
+                },
+                {
+                  "$$ClassName" : "TCastleHorizontalGroup",
+                  "HorizontalAnchorParent" : "hpRight",
+                  "HorizontalAnchorSelf" : "hpRight",
+                  "Name" : "HorizontalGroup6",
+                  "Spacing" : 1.0000000000000000E+001,
+                  "TranslationPersistent" : {
+                    "$$ClassName" : "TCastleVector2Persistent",
+                    "Y" : -1.2000000000000000E+002
+                  },
+                  "VerticalAnchorParent" : "vpTop",
+                  "VerticalAnchorSelf" : "vpTop",
+                  "$Children" : [
+                    {
+                      "$$ClassName" : "TCastleLabel",
+                      "Name" : "LabelRingThicknessHeight1",
+                      "Text" : [
+                        "Ring brush thickness:"
+                      ],
+                      "VerticalAnchorParent" : "vpMiddle",
+                      "VerticalAnchorSelf" : "vpMiddle"
+                    },
+                    {
+                      "$$ClassName" : "TCastleFloatSlider",
+                      "Background" : {
+                        "$$ClassName" : "TCastleImagePersistent"
+                      },
+                      "Max" : 1.0000000000000000E+001,
+                      "Name" : "RingThicknessSlider",
+                      "Thumb" : {
+                        "$$ClassName" : "TCastleImagePersistent"
+                      },
+                      "TranslationPersistent" : {
+                        "$$ClassName" : "TCastleVector2Persistent",
+                        "X" : 2.2700000000000000E+002
+                      },
+                      "Value" : 1.0000000000000000E+000,
+                      "VerticalAnchorParent" : "vpMiddle",
+                      "VerticalAnchorSelf" : "vpMiddle",
+                      "Width" : 3.0000000000000000E+002
+                    }
+                  ]
                 }
               ]
             },
@@ -633,7 +701,7 @@
               ],
               "TranslationPersistent" : {
                 "$$ClassName" : "TCastleVector2Persistent",
-                "Y" : -2.4300000000000000E+002
+                "Y" : -2.8300000000000000E+002
               },
               "VerticalAnchorParent" : "vpTop",
               "VerticalAnchorSelf" : "vpTop"
