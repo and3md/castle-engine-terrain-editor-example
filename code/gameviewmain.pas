@@ -39,6 +39,7 @@ type
     StrengthSlider: TCastleIntegerSlider;
     BrushMaxHeightSlider: TCastleIntegerSlider;
     BrushSizeSlider: TCastleIntegerSlider;
+    RingThicknessSlider: TCastleFloatSlider;
 
     RaiseTerrainButton: TCastleButton;
     LowerTerrainButton: TCastleButton;
@@ -193,7 +194,7 @@ begin
         toRaise:
           //Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
           Terrain.RaiseTerrainShader(HitInfo.Point, FBrush, BrushSizeSlider.Value,
-            StrengthSlider.Value, BrushMaxHeightSlider.Value);
+            StrengthSlider.Value, BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
           Terrain.LowerTerrain(HitInfo.Point, StrengthSlider.Value);
       end;
