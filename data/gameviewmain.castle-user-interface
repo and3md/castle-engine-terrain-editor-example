@@ -788,6 +788,7 @@
                         "$$ClassName" : "TCastleVector2Persistent",
                         "X" : 1.7900000000000000E+002
                       },
+                      "Value" : 128,
                       "VerticalAnchorParent" : "vpMiddle",
                       "VerticalAnchorSelf" : "vpMiddle"
                     },
@@ -800,6 +801,7 @@
                         "$$ClassName" : "TCastleVector2Persistent",
                         "X" : 2.8900000000000000E+002
                       },
+                      "Value" : 64,
                       "VerticalAnchorParent" : "vpMiddle",
                       "VerticalAnchorSelf" : "vpMiddle"
                     },
