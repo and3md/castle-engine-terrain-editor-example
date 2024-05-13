@@ -56,6 +56,10 @@ type
 
     RotationPlus15DegButton: TCastleButton;
 
+    SetHeightMapSizeButton: TCastleButton;
+    HeightMapWidthIntegerEdit: TCastleIntegerEdit;
+    HeightMapHeightIntegerEdit: TCastleIntegerEdit;
+
     LabelOperation: TCastleLabel;
   private
     Operation: TTerrainOperation;
@@ -66,6 +70,8 @@ type
     procedure UpdateOperationAndBrushLabel;
     function BrushToString(ABrush: TCastleTerrainBrush): String;
     function OperationToString(AOperation: TTerrainOperation): String;
+
+    procedure SetHeightMapSizeButtonClick(Sender: TObject);
   public
     TimeAccumulator: Single;
     constructor Create(AOwner: TComponent); override;
@@ -160,6 +166,14 @@ begin
   end;
 end;
 
+procedure TViewMain.SetHeightMapSizeButtonClick(Sender: TObject);
+begin
+  Terrain.SetEditModeHeightMapSize(Vector2Integer(
+    HeightMapWidthIntegerEdit.Value,
+    HeightMapHeightIntegerEdit.Value)
+  );
+end;
+
 constructor TViewMain.Create(AOwner: TComponent);
 begin
   inherited;
@@ -183,6 +197,8 @@ begin
   RingBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   LyingCylinderBrushButton.OnClick := {$ifdef FPC}@{$endif}BrushTypeClick;
   RotationPlus15DegButton.OnClick := {$ifdef FPC}@{$endif}RotationPlus15DegButtonClick;
+
+  SetHeightMapSizeButton.OnClick := {$ifdef FPC}@{$endif}SetHeightMapSizeButtonClick;
 
   UpdateOperationAndBrushLabel;
 end;
