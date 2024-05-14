@@ -222,11 +222,11 @@ begin
       case Operation of
         toRaise:
           //Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
-          Terrain.RaiseTerrainShader(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
-          Terrain.LowerTerrain(HitInfo.Point, StrengthSlider.Value);
+          //Terrain.LowerTerrain(HitInfo.Point, StrengthSlider.Value);
       end;
       // Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
       //TerrainImage.SetHeight(Vector2(HitInfo.Point.X, -HitInfo.Point.Z), Vector2(HitInfo.Point.X, -HitInfo.Point.Z), 255);
