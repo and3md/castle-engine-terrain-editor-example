@@ -60,6 +60,8 @@ type
     HeightMapWidthIntegerEdit: TCastleIntegerEdit;
     HeightMapHeightIntegerEdit: TCastleIntegerEdit;
 
+    HorizontalGroupMaxHeight: TCastleHorizontalGroup;
+
     LabelOperation: TCastleLabel;
   private
     Operation: TTerrainOperation;
@@ -92,9 +94,15 @@ uses SysUtils, CastleLog, Math;
 procedure TViewMain.OperationClick(Sender: TObject);
 begin
   if Sender = RaiseTerrainButton then
-    Operation := toRaise
+  begin
+    Operation := toRaise;
+    HorizontalGroupMaxHeight.Exists := true;
+  end
   else if Sender = LowerTerrainButton then
-    Operation := toLower
+  begin
+    Operation := toLower;
+    HorizontalGroupMaxHeight.Exists := false;
+  end
   else if Sender = LevelTerrainButton then
     Operation := toLevel;
 
@@ -221,12 +229,15 @@ begin
       WritelnLog('Punkt uderzenia: ', HitInfo.Point.ToString);
       case Operation of
         toRaise:
-          //Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
           Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
-          //Terrain.LowerTerrain(HitInfo.Point, StrengthSlider.Value);
+          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+            StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
+            0, RingThicknessSlider.Value);
+        toLevel:
+          ;
       end;
       // Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
       //TerrainImage.SetHeight(Vector2(HitInfo.Point.X, -HitInfo.Point.Z), Vector2(HitInfo.Point.X, -HitInfo.Point.Z), 255);
