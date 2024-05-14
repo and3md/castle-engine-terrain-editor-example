@@ -272,7 +272,6 @@
                   "CustomBackgroundPressed" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
-                  "Enabled" : false,
                   "Image" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
@@ -675,7 +674,7 @@
                   "$$ClassName" : "TCastleHorizontalGroup",
                   "HorizontalAnchorParent" : "hpRight",
                   "HorizontalAnchorSelf" : "hpRight",
-                  "Name" : "HorizontalGroup3",
+                  "Name" : "HorizontalGroupMaxHeight",
                   "Spacing" : 1.0000000000000000E+001,
                   "TranslationPersistent" : {
                     "$$ClassName" : "TCastleVector2Persistent",
@@ -801,7 +800,7 @@
                         "$$ClassName" : "TCastleVector2Persistent",
                         "X" : 2.8900000000000000E+002
                       },
-                      "Value" : 64,
+                      "Value" : 128,
                       "VerticalAnchorParent" : "vpMiddle",
                       "VerticalAnchorSelf" : "vpMiddle"
                     },
