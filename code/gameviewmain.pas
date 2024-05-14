@@ -66,6 +66,7 @@ type
   private
     Operation: TTerrainOperation;
     FBrush: TCastleTerrainBrush;
+    IsFirstFramePressed: Boolean;
     procedure OperationClick(Sender: TObject);
     procedure BrushTypeClick(Sender: TObject);
     procedure RotationPlus15DegButtonClick(Sender: TObject);
@@ -104,7 +105,10 @@ begin
     HorizontalGroupMaxHeight.Exists := false;
   end
   else if Sender = LevelTerrainButton then
+  begin
     Operation := toLevel;
+    HorizontalGroupMaxHeight.Exists := true;
+  end;
 
   UpdateOperationAndBrushLabel;
 end;
@@ -188,6 +192,7 @@ begin
   DesignUrl := 'castle-data:/gameviewmain.castle-user-interface';
   Operation := toRaise;
   FBrush := ctbCone;
+  IsFirstFramePressed := true;
 end;
 
 procedure TViewMain.Start;
@@ -226,7 +231,7 @@ begin
     RayCollision := Viewport.MouseRayHit;
     if (RayCollision <> nil) and RayCollision.Info(HitInfo) then
     begin
-      WritelnLog('Punkt uderzenia: ', HitInfo.Point.ToString);
+      WritelnLog('Hitpoint: ', HitInfo.Point.ToString);
       case Operation of
         toRaise:
           Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
@@ -237,12 +242,34 @@ begin
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             0, RingThicknessSlider.Value);
         toLevel:
-          ;
+        begin
+          if IsFirstFramePressed then
+            BrushMaxHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
+          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+            StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
+            BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
+        end;
       end;
+
+      IsFirstFramePressed := false;
       // Terrain.RaiseTerrain(HitInfo.Point, StrengthSlider.Value);
       //TerrainImage.SetHeight(Vector2(HitInfo.Point.X, -HitInfo.Point.Z), Vector2(HitInfo.Point.X, -HitInfo.Point.Z), 255);
     end;
+  end else
+    IsFirstFramePressed := true;
+
+  if Container.MousePressed = [] then
+  begin
+    if Operation = toLevel then
+    begin
+      RayCollision := Viewport.MouseRayHit;
+      if (RayCollision <> nil) and RayCollision.Info(HitInfo) then
+      begin
+        BrushMaxHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
+      end;
+    end;
   end;
+
 end;
 
 function TViewMain.Press(const Event: TInputPressRelease): Boolean;
