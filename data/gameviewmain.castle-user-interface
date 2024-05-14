@@ -714,6 +714,50 @@
                 },
                 {
                   "$$ClassName" : "TCastleHorizontalGroup",
+                  "Exists" : false,
+                  "HorizontalAnchorParent" : "hpRight",
+                  "HorizontalAnchorSelf" : "hpRight",
+                  "Name" : "HorizontalGroupLevelHeight",
+                  "Spacing" : 1.0000000000000000E+001,
+                  "TranslationPersistent" : {
+                    "$$ClassName" : "TCastleVector2Persistent",
+                    "Y" : -1.6900000000000000E+002
+                  },
+                  "VerticalAnchorParent" : "vpTop",
+                  "VerticalAnchorSelf" : "vpTop",
+                  "$Children" : [
+                    {
+                      "$$ClassName" : "TCastleLabel",
+                      "Name" : "LabelBrushLevelHeight",
+                      "Text" : [
+                        "Brush level height:"
+                      ],
+                      "VerticalAnchorParent" : "vpMiddle",
+                      "VerticalAnchorSelf" : "vpMiddle"
+                    },
+                    {
+                      "$$ClassName" : "TCastleIntegerSlider",
+                      "Background" : {
+                        "$$ClassName" : "TCastleImagePersistent"
+                      },
+                      "Max" : 255,
+                      "Name" : "BrushLevelHeightSlider",
+                      "Thumb" : {
+                        "$$ClassName" : "TCastleImagePersistent"
+                      },
+                      "TranslationPersistent" : {
+                        "$$ClassName" : "TCastleVector2Persistent",
+                        "X" : 2.0000000000000000E+002
+                      },
+                      "Value" : 255,
+                      "VerticalAnchorParent" : "vpMiddle",
+                      "VerticalAnchorSelf" : "vpMiddle",
+                      "Width" : 3.0000000000000000E+002
+                    }
+                  ]
+                },
+                {
+                  "$$ClassName" : "TCastleHorizontalGroup",
                   "HorizontalAnchorParent" : "hpRight",
                   "HorizontalAnchorSelf" : "hpRight",
                   "Name" : "HorizontalGroup6",
