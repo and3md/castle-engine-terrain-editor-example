@@ -62,6 +62,9 @@ type
 
     HorizontalGroupMaxHeight: TCastleHorizontalGroup;
 
+    HorizontalGroupLevelHeight: TCastleHorizontalGroup;
+    BrushLevelHeightSlider: TCastleIntegerSlider;
+
     LabelOperation: TCastleLabel;
   private
     Operation: TTerrainOperation;
@@ -98,16 +101,19 @@ begin
   begin
     Operation := toRaise;
     HorizontalGroupMaxHeight.Exists := true;
+    HorizontalGroupLevelHeight.Exists := false;
   end
   else if Sender = LowerTerrainButton then
   begin
     Operation := toLower;
     HorizontalGroupMaxHeight.Exists := false;
+    HorizontalGroupLevelHeight.Exists := false;
   end
   else if Sender = LevelTerrainButton then
   begin
     Operation := toLevel;
-    HorizontalGroupMaxHeight.Exists := true;
+    HorizontalGroupMaxHeight.Exists := false;
+    HorizontalGroupLevelHeight.Exists := true;
   end;
 
   UpdateOperationAndBrushLabel;
@@ -244,10 +250,10 @@ begin
         toLevel:
         begin
           if IsFirstFramePressed then
-            BrushMaxHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
+            BrushLevelHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
           Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
-            BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
+            BrushLevelHeightSlider.Value, RingThicknessSlider.Value);
         end;
       end;
 
@@ -265,7 +271,7 @@ begin
       RayCollision := Viewport.MouseRayHit;
       if (RayCollision <> nil) and RayCollision.Info(HitInfo) then
       begin
-        BrushMaxHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
+        BrushLevelHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
       end;
     end;
   end;
