@@ -298,7 +298,6 @@
                   "CustomBackgroundPressed" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
-                  "Enabled" : false,
                   "Image" : {
                     "$$ClassName" : "TCastleImagePersistent"
                   },
@@ -550,7 +549,7 @@
                       },
                       "TranslationPersistent" : {
                         "$$ClassName" : "TCastleVector2Persistent",
-                        "X" : 1.1100000762939453E+002
+                        "X" : 1.1100000000000000E+002
                       },
                       "Value" : 10,
                       "VerticalAnchorParent" : "vpMiddle",
@@ -704,7 +703,7 @@
                       },
                       "TranslationPersistent" : {
                         "$$ClassName" : "TCastleVector2Persistent",
-                        "X" : 1.9500001525878906E+002
+                        "X" : 1.9500000000000000E+002
                       },
                       "Value" : 255,
                       "VerticalAnchorParent" : "vpMiddle",
