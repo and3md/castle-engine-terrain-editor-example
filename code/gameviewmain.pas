@@ -66,6 +66,9 @@ type
     BrushLevelHeightSlider: TCastleIntegerSlider;
 
     LabelOperation: TCastleLabel;
+
+    SaveHeightMapUrlEdit: TCastleEdit;
+    SaveHeightMapButton: TCastleButton;
   private
     Operation: TTerrainOperation;
     FBrush: TCastleTerrainBrush;
@@ -73,6 +76,7 @@ type
     procedure OperationClick(Sender: TObject);
     procedure BrushTypeClick(Sender: TObject);
     procedure RotationPlus15DegButtonClick(Sender: TObject);
+    procedure SaveHeightMapClick(Sender: TObject);
     procedure UpdateOperationAndBrushLabel;
     function BrushToString(ABrush: TCastleTerrainBrush): String;
     function OperationToString(AOperation: TTerrainOperation): String;
@@ -147,6 +151,11 @@ begin
     BrushRotationSlider.Value := BrushRotationSlider.Value + 15.0;
 end;
 
+procedure TViewMain.SaveHeightMapClick(Sender: TObject);
+begin
+  Terrain.SaveEditModeHeightMap(SaveHeightMapUrlEdit.Text);
+end;
+
 procedure TViewMain.UpdateOperationAndBrushLabel;
 begin
   LabelOperation.Caption := OperationToString(Operation) + ': ' + BrushToString(FBrush);
@@ -218,6 +227,8 @@ begin
   RotationPlus15DegButton.OnClick := {$ifdef FPC}@{$endif}RotationPlus15DegButtonClick;
 
   SetHeightMapSizeButton.OnClick := {$ifdef FPC}@{$endif}SetHeightMapSizeButtonClick;
+
+  SaveHeightMapButton.OnClick := {$ifdef FPC}@{$endif}SaveHeightMapClick;
 
   UpdateOperationAndBrushLabel;
 end;
