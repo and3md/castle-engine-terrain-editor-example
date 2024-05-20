@@ -908,7 +908,7 @@
                 {
                   "$$ClassName" : "TCastleEdit",
                   "CaptureAllInput" : false,
-                  "Name" : "EditSaveHeightMapURL",
+                  "Name" : "SaveHeightMapUrlEdit",
                   "Text" : "castle-data:/result_height_map.png",
                   "VerticalAnchorParent" : "vpMiddle",
                   "VerticalAnchorSelf" : "vpMiddle",
