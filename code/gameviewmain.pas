@@ -153,7 +153,7 @@ end;
 
 procedure TViewMain.SaveHeightMapClick(Sender: TObject);
 begin
-  Terrain.SaveEditModeHeightMap(SaveHeightMapUrlEdit.Text);
+  Terrain.EditMode.SaveEditModeHeightMap(SaveHeightMapUrlEdit.Text);
 end;
 
 procedure TViewMain.UpdateOperationAndBrushLabel;
@@ -195,7 +195,7 @@ end;
 
 procedure TViewMain.SetHeightMapSizeButtonClick(Sender: TObject);
 begin
-  Terrain.SetEditModeHeightMapSize(Vector2Integer(
+  Terrain.EditMode.SetEditModeHeightMapSize(Vector2Integer(
     HeightMapWidthIntegerEdit.Value,
     HeightMapHeightIntegerEdit.Value)
   );
@@ -251,18 +251,18 @@ begin
       WritelnLog('Hitpoint: ', HitInfo.Point.ToString);
       case Operation of
         toRaise:
-          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
-          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             0, RingThicknessSlider.Value);
         toLevel:
         begin
           if IsFirstFramePressed then
-            BrushLevelHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
-          Terrain.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+            BrushLevelHeightSlider.Value := Terrain.EditMode.TerrainHeight(HitInfo.Point);
+          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushLevelHeightSlider.Value, RingThicknessSlider.Value);
         end;
@@ -282,7 +282,7 @@ begin
       RayCollision := Viewport.MouseRayHit;
       if (RayCollision <> nil) and RayCollision.Info(HitInfo) then
       begin
-        BrushLevelHeightSlider.Value := Terrain.TerrainHeight(HitInfo.Point);
+        BrushLevelHeightSlider.Value := Terrain.EditMode.TerrainHeight(HitInfo.Point);
       end;
     end;
   end;
