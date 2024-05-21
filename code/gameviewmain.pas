@@ -264,18 +264,18 @@ begin
       WritelnLog('Hitpoint: ', HitInfo.Point.ToString);
       case Operation of
         toRaise:
-          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.EditMode.AlterTerrain(Container, HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushMaxHeightSlider.Value, RingThicknessSlider.Value);
         toLower:
-          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.EditMode.AlterTerrain(Container, HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             0, RingThicknessSlider.Value);
         toLevel:
         begin
           if IsFirstFramePressed then
             BrushLevelHeightSlider.Value := Terrain.EditMode.TerrainHeight(HitInfo.Point);
-          Terrain.EditMode.AlterTerrain(HitInfo.Point, FBrush, BrushSizeSlider.Value,
+          Terrain.EditMode.AlterTerrain(Container, HitInfo.Point, FBrush, BrushSizeSlider.Value,
             StrengthSlider.Value, DegToRad(BrushRotationSlider.Value),
             BrushLevelHeightSlider.Value, RingThicknessSlider.Value);
         end;
